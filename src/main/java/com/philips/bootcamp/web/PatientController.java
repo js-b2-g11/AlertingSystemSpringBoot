@@ -21,6 +21,7 @@ import com.philips.bootcamp.service.PatientService;
 import com.philips.bootcamp.service.PulseRate;
 import com.philips.bootcamp.service.Spo2;
 import com.philips.bootcamp.service.Temperature;
+import com.philips.bootcamp.utils.Values;
 
 @RestController
 public class PatientController {
@@ -66,24 +67,24 @@ public class PatientController {
 
   @PostMapping(value = "/api/patient/{patientId}/vitals")
   public ResponseEntity<List<String>> monitorVitals(@PathVariable("patientId") String patientId,
-      @RequestBody Patient vitals) {
+      @RequestBody Patient Vitals) {
     final Temperature temperatureObj = new Temperature();
     final Spo2 spo2Obj = new Spo2();
     final PulseRate pulseRateObj = new PulseRate();
     final Patient patient = service.findById(patientId);
     final List<String> alerts = new ArrayList<>();
     if (patient != null) {
-      if (temperatureObj.checkRange(vitals.getTemperatureVal())) {
-        service.alarmSwitch("temperature", true, patientId);
-        alerts.add(temperatureObj.alertMessage(vitals.getTemperatureVal()));
+      if (temperatureObj.checkRange(Vitals.getTemperatureVal())) {
+        service.alarmSwitch(Values.TEMPERATURE_PARAM, true, patientId);
+        alerts.add(temperatureObj.alertMessage(Vitals.getTemperatureVal()));
       }
-      if (spo2Obj.checkRange(vitals.getSpo2Val())) {
-        service.alarmSwitch("spo2", true, patientId);
-        alerts.add(spo2Obj.alertMessage(vitals.getSpo2Val()));
+      if (spo2Obj.checkRange(Vitals.getSpo2Val())) {
+        service.alarmSwitch(Values.SPO2PARAM, true, patientId);
+        alerts.add(spo2Obj.alertMessage(Vitals.getSpo2Val()));
       }
-      if (pulseRateObj.checkRange(vitals.getPulseRateVal())) {
-        service.alarmSwitch("pulseRate", true, patientId);
-        alerts.add(pulseRateObj.alertMessage(vitals.getPulseRateVal()));
+      if (pulseRateObj.checkRange(Vitals.getPulseRateVal())) {
+        service.alarmSwitch(Values.PULSERATEPARAM, true, patientId);
+        alerts.add(pulseRateObj.alertMessage(Vitals.getPulseRateVal()));
       }
       return new ResponseEntity<>(alerts, HttpStatus.OK);
     } else {

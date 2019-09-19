@@ -3,12 +3,14 @@
  */
 package com.philips.bootcamp.service;
 
+import com.philips.bootcamp.utils.Values;
+
 public class Temperature implements PatientVitalsService {
 
   @Override
   public boolean checkRange(float value) {
     boolean isCritical = false;
-    if (value >= 99.5 && value < 106) {
+    if (value >= Values.MIN_TEMP && value < Values.MAX_TEMP) {
       isCritical = true;
     }
     return isCritical;
@@ -17,9 +19,9 @@ public class Temperature implements PatientVitalsService {
   @Override
   public String alertMessage(float value) {
     String alertMessage = "";
-    if (value > 99.5 && value < 104) {
+    if (value > Values.MIN_TEMP && value < Values.CRITICAL_TEMP) {
       alertMessage = "Critical Temperature value: Fever";
-    } else if (value >= 104 && value < 106) {
+    } else if (value >= Values.CRITICAL_TEMP && value < Values.MAX_TEMP ) {
       alertMessage = "Critical Temperature value: Hyperpyrexia";
     }
     return alertMessage;

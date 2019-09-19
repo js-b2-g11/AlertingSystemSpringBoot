@@ -23,7 +23,7 @@ public class Patient {
   private boolean temperatureAlert;
   @Column(name = "spo2_alert")
   private boolean spo2Alert;
-  @Column(name = "pulse_rate_alert")
+  @Column(name = "pulserate_alert")
   private boolean pulseRateAlert;
   @Column(name = "bed_id")
   private int bedId;
