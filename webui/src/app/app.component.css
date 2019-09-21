@@ -1,0 +1,23 @@
+.item {
+    position: relative;
+    background: #546cd8;
+    border-radius: 3px;
+    padding: 5px;
+    box-sizing: border-box;
+    
+  }
+.item-content{
+    align-content: center;
+}
+  .mat-raised-button {
+    margin: 5px;
+  }
+
+  .item-title{
+      
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: aliceblue;
+  }
+  h1{
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
