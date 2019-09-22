@@ -1,21 +1,31 @@
-<p>patient works!</p>
 <!-- <button (click)="getAllPatients()">Get patient names</button> -->
 <!-- {{getAllPatients()}} -->
-<table>
-    <thead>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Bed no.</th>
-        <th>Age</th>
-        <th>Gender</th>        
-    </thead>
-    <tbody>
-        <tr *ngFor = "let patient of patientList">
-            <td>{{patient.patientId}}</td>
-            <td>{{patient.name}}</td>
-            <td>{{patient.bedId}}</td>
-            <td>{{patient.age}}</td>
-            <td>{{patient.gender}}</td>
-        </tr>
-    </tbody>    
-</table>
+<div class="patientListContainer">
+    <div class="patientListTable">
+        <table>
+            <thead>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Bed no.</th>
+                <th>Age</th>
+                <th>Gender</th>        
+            </thead>
+            <tbody>
+                <tr *ngFor = "let patient of patientList">
+                    <td>{{patient.patientId}}</td>
+                    <td>{{patient.name}}</td>
+                    <td>{{patient.bedId}}</td>
+                    <td>{{patient.age}}</td>
+                    <td>{{patient.gender}}</td>
+                    <td>
+                        <button class="btn btn-success" (click)="deletePatient(patient)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>    
+        </table>
+    </div>
+
+    <div class="patientListNavigation">
+        <button type="button" class="btn btn-primary" (click)="navigatePrevious()">Back</button>
+    </div>
+</div>

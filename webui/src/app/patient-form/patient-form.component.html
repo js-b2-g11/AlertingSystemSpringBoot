@@ -1,0 +1,34 @@
+<form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+    <label>
+        PatientId:
+        <input type="text" formControlName="patientId">
+    </label>
+    <br>
+    <label>
+        BedId:
+        <!-- <input type="text" formControlName="bedId"> -->
+        <select id="statusDropdown" formControlName="bedId">
+            <ng-container *ngFor="let bed of beds.bedMap | keyvalue">
+                <option *ngIf="!bed.value" [ngValue]="bed.key">{{bed.key}}</option>
+            </ng-container>             
+        </select>
+        <!-- <select ng-model='bedId'  ng-options='status for status in bedArray'></select> -->
+    </label>
+    <br>
+    <label>
+        Name:
+        <input type="text" formControlName="name">
+    </label>
+    <br>
+    <label>
+        Age:
+        <input type="text" formControlName="age">
+    </label>
+    <br>
+    <label>
+        Gender:
+        <input type="text" formControlName="gender">
+    </label>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

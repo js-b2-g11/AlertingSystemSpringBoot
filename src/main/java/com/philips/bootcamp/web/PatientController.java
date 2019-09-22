@@ -32,7 +32,8 @@ public class PatientController {
   public void setService(PatientService service) {
     this.service = service;
   }
-
+  
+  @CrossOrigin
   @PostMapping(value = "/api/patient")
   public ResponseEntity<Patient> addAPatient(@RequestBody Patient toBeAdded) {
     try {
@@ -55,7 +56,8 @@ public class PatientController {
   public List<Patient> displayRecords() {
     return service.findAll();
   }
-
+  
+  @CrossOrigin
   @DeleteMapping(value = "/api/patient/{patientId}")
   public ResponseEntity<Patient> dischargeAPatient(@PathVariable("patientId") String patientId) {
     final Patient patient = service.findById(patientId);
