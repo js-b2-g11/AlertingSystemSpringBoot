@@ -15,7 +15,7 @@ export class BedMap {
         for (var i = 201; i <= 210; i++) {
             this.bedMap.set(i, false);
         }        
-        this.setBedMapValues();
+        this.setBedMapValues();        
     }
 
     setBedMapValues() {

@@ -6,7 +6,15 @@
         <ul>{{patient.age}}</ul>
         <ul>{{patient.gender}}</ul>
     </li>
-</ng-container>
 
+    <div class="patientListNavigation">
+        <button type="button" class="btn btn-primary" routerLink="/dashboard">Back</button>
+    </div>
+
+    <div class="deletePatientContainer">
+        <button type="buton" class="btn btn-danger" (click)="deletePatient()">Delete</button>
+    </div>
+
+</ng-container>
 
 <ng-template #emptyBlock>Patient not selected!</ng-template>
