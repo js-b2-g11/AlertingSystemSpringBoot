@@ -18,6 +18,10 @@ export class BedMap {
         this.setBedMapValues();        
     }
 
+    public getMap(): Map<number, boolean> {
+      return this.bedMap;
+    }
+
     setBedMapValues() {
         this.patientService.getPatients().subscribe(
             data => {

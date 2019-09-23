@@ -4,9 +4,9 @@ export class Patient {
     name: string;
     age: number;
     gender: string;
-    temperature_alert: boolean;
-    spo2_alert: boolean;
-    pulse_rate_alert: boolean;
+    temperatureAlert: boolean;
+    spo2Alert: boolean;
+    pulseRateAlert: boolean;
 
     public constructor(patientId:string, bedId: number, name: string, age: number,
         gender: string, temperature_alert: boolean, spo2_alert: boolean, pulse_rate_alert: boolean) {
@@ -15,8 +15,8 @@ export class Patient {
             this.name = name;
             this.age = age;
             this.gender = gender;
-            this.temperature_alert = temperature_alert;
-            this.spo2_alert = spo2_alert;
-            this.pulse_rate_alert = pulse_rate_alert;
+            this.temperatureAlert = temperature_alert;
+            this.spo2Alert = spo2_alert;
+            this.pulseRateAlert = pulse_rate_alert;
     }
 }

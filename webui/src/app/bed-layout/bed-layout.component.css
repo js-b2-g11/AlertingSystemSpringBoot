@@ -3,7 +3,7 @@ div .bedbox {
     margin: 5px;
     height: 100px;  
     /* width: 100px;     */
-    margin: 5px;
+    margin: 5px;    
 }
 
 div .bedbox.occupied {

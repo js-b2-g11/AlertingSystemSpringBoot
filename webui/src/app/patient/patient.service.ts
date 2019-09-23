@@ -2,6 +2,7 @@ import { Patient } from './patient'
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Vitals } from '../vitals';
 
 @Injectable({providedIn:'root'})
 export class PatientService {
@@ -25,5 +26,9 @@ export class PatientService {
 
     public getPatientFromBedId(bedId: number) {
         return this.http.get('http://localhost:8080/api/bed/'+bedId);
+    }
+
+    public getPatientVitalStatus(patientId: string, vitals: Vitals) {        
+        return this.http.post('http://localhost:8080/api/patient/'+patientId+'/vitals', vitals);
     }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Directive, Input } from '@angular/core';
 import { PatientService } from '../patient/patient.service';
 import { Patient } from '../patient/patient';
 import { BedMap } from '../globals';
@@ -12,14 +12,20 @@ import { Router } from '@angular/router';
 })
 export class BedLayoutComponent implements OnInit {
 
-  selectedLayout: number = 1;  
+  selectedLayout: number = 1;
 
   patientList: Patient[];
 
-  constructor(private router: Router, private beds: BedMap, private patientService: PatientService) { }
+  patient: Patient;
+
+  borderStyle: string = "2px solid blue";
+
+  constructor(private router: Router, private beds: BedMap, private patientService: PatientService) {      
+  }
 
   ngOnInit() {
-    this.getAllPatients();   
+    this.getAllPatients();
+    this.setAlert();
   }
 
   public getAllPatients(): void {
@@ -27,16 +33,37 @@ export class BedLayoutComponent implements OnInit {
       this.patientList = data);
   }
 
+  public getPatient(bedId: number): any {
+    return this.patientService.getPatient(bedId).subscribe(
+      data => this.patient = data
+    );
+  }
+
   onClickBed(bedId: number) {
     if (!this.beds.bedMap.get(bedId)) {
-      this.router.navigate(['']);
+      this.router.navigate(['patient-form']);
     } else {
-      this.patientService.getPatientFromBedId(bedId).subscribe (
+      this.patientService.getPatientFromBedId(bedId).subscribe(
         data => {
-          this.beds.selectedPatient = data;          
+          this.beds.selectedPatient = data;
           this.router.navigate(['patient-detail']);
         }
       )
+    }
+  }
+
+  setAlert() {
+    for (let bed of this.beds.bedMap.keys()) {
+      console.log(this.beds.bedMap.get(bed));
+      if (this.beds.bedMap.get(bed)) {
+        var patient = this.patientList.find(patient => patient.bedId === bed);
+        console.log(patient.pulseRateAlert);
+        if (patient.pulseRateAlert ||
+          patient.spo2Alert ||
+          patient.temperatureAlert) {            
+          this.borderStyle = "2px solid red";
+        }
+      }
     }
   }
 }

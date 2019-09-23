@@ -7,14 +7,18 @@
     LAYOUT 2
 </button>
 
-<div class="bed-layout" *ngIf="selectedLayout === 1">        
-    <ng-container *ngFor="let bed of beds.bedMap | keyvalue">        
-        <div class="bedbox occupied" *ngIf="bed.value; else emptyBlock" (click)="onClickBed(bed.key)">{{bed.key}}</div>
+<div class="bed-layout" *ngIf="selectedLayout === 1">
+    <ng-container *ngFor="let bed of beds.bedMap | keyvalue">
+        <div class="bedbox occupied" [ngStyle]="{'border': borderStyle}" *ngIf="bed.value; else emptyBlock"
+            (click)="onClickBed(bed.key)">{{bed.key}}
+        </div>
         <ng-template #emptyBlock>
             <div class="bedbox empty" (click)="onClickBed(bed.key)">{{bed.key}}</div>
         </ng-template>
     </ng-container>
 </div>
+
+<button (click)="setAlert()">Update</button>
 
 <!-- LAYOUT 2
 
