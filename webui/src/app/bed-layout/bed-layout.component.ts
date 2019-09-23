@@ -3,6 +3,7 @@ import { PatientService } from '../patient/patient.service';
 import { Patient } from '../patient/patient';
 import { BedMap } from '../globals';
 import { Router } from '@angular/router';
+import { Vitals } from '../vitals';
 
 @Component({
   selector: 'app-bed-layout',
@@ -16,17 +17,18 @@ export class BedLayoutComponent implements OnInit {
 
   patientList: Patient[];
 
-  patient: Patient; 
+  patient: Patient;
 
   interval: any;
 
   constructor(private router: Router, private beds: BedMap, private patientService: PatientService) { }
 
   ngOnInit() {
-    this.getAllPatients();    
-    this.interval = setInterval(() => { 
-      this.getAllPatients();       
-  }, 5000);
+    this.getAllPatients();
+    this.interval = setInterval(() => {
+      this.getAllPatients();   
+      this.postPatientVitals();   
+    }, 5000);    
   }
 
   public getAllPatients(): void {
@@ -56,6 +58,24 @@ export class BedLayoutComponent implements OnInit {
     }
   }
 
+  public postPatientVitals() {
+    var temperature: number;
+    var spo2: number;
+    var pulserate: number;        
+    this.patientService.getPatients().subscribe(data => {
+    this.patientList = data;
+      for (let patient of this.patientList) {
+        temperature = Math.random() * (250) + 20;
+        spo2 = Math.random() * (100) + 20;
+        pulserate = Math.random() * (70) + 50;
+        let vitals = new Vitals(temperature, spo2, pulserate);
+        this.patientService.getPatientVitalStatus(patient.patientId, vitals).subscribe(
+          data => { }
+        );
+      }
+    });
+  }
+  
   // setAlert() {
   //   for (let bed of this.beds.bedMap.keys()) {
   //     console.log(this.beds.bedMap.get(bed));

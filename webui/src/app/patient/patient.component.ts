@@ -23,7 +23,7 @@ export class PatientComponent implements OnInit {
   ngOnInit() {
     this.getAllPatients();
     console.log(this.beds.bedMap);
-    this.postPatientVitals();
+    // this.postPatientVitals();
   }
 
   public getAllPatients(): void {
