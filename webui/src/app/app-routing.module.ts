@@ -10,7 +10,8 @@ import { PatientDetailComponent } from './patient-detail/patient-detail.componen
 const routes: Routes = [
   { path: 'list-patient', component: PatientComponent},
   { path: 'patient-detail', component: PatientDetailComponent},
-  { path: '', component: PatientFormComponent },
+  { path: 'patient-form', component: PatientFormComponent },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   { path: 'dashboard', component: BedLayoutComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
