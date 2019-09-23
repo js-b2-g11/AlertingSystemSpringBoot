@@ -1,0 +1,13 @@
+div .bedbox {
+    width: 100px;
+    height: 100px;    
+    margin: 5px;
+}
+
+div .bedbox.occupied {
+    background-color: green;
+}
+
+div .bedbox.empty {
+    background-color: gray;
+}

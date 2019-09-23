@@ -1,0 +1,12 @@
+<ng-container *ngIf="patient; else emptyBlock">
+    <li>
+        <ul>{{patient.patientId}}</ul>
+        <ul>{{patient.name}}</ul>
+        <ul>{{patient.bedId}}</ul>
+        <ul>{{patient.age}}</ul>
+        <ul>{{patient.gender}}</ul>
+    </li>
+</ng-container>
+
+
+<ng-template #emptyBlock>Patient not selected!</ng-template>

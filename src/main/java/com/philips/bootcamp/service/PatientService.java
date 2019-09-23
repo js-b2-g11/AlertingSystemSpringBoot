@@ -19,4 +19,6 @@ public interface PatientService {
 
   void dischargePatient(String patientId);
 
+  String findPatientId(int bedId);
+
 }

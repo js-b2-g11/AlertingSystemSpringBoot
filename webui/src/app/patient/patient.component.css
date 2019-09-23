@@ -5,3 +5,9 @@ td, th {
 .patientListContainer {
     width: 100%;
 }
+
+.bedBox {
+    background-color: aqua;
+    width: 100px;
+    height: 100px;
+}

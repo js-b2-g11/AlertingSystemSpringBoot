@@ -1,0 +1,39 @@
+<h1>BED LAYOUTS</h1>
+<button mat-raised-button (click)="selectedLayout = 1">
+    LAYOUT 1
+</button>
+
+<button mat-raised-button (click)="selectedLayout = 2">
+    LAYOUT 2
+</button>
+
+<div class="bed-layout" *ngIf="selectedLayout === 1">        
+    <ng-container *ngFor="let bed of beds.bedMap | keyvalue">        
+        <div class="bedbox occupied" *ngIf="bed.value; else emptyBlock" (click)="onClickBed(bed.key)">{{bed.key}}</div>
+        <ng-template #emptyBlock>
+            <div class="bedbox empty" (click)="onClickBed(bed.key)">{{bed.key}}</div>
+        </ng-template>
+    </ng-container>
+</div>
+
+<!-- LAYOUT 2
+
+<div class="main-container layout2" *ngIf="selectedLayout === 2">
+
+     CONTENT 
+    <div class="content" fxLayout="row wrap">
+
+        <div class="item" fxFlex="0 0 calc(33.3% - 12px)" [ngStyle.gt-xs]="{'margin.px': 6}" fxFlex.xs="0 0 100%"
+            [ngStyle.xs]="{'margin.px': null, 'margin-bottom.px': 10}"
+            *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12]">
+            <div class="item-content">
+
+                <div class="item-title">
+                    <p>BED {{item}}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    END OF CONTENT
+</div> -->

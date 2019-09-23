@@ -6,6 +6,8 @@ import { Patient } from './patient/patient';
 export class BedMap {
 
     patientArray: Patient[];
+
+    selectedPatient: any;
     
     bedMap: Map<number, boolean> = new Map();
 

@@ -4,7 +4,7 @@ import { Patient } from './patient/patient';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PatientFormComponent } from './patient-form/patient-form.component';
-import { BedMap } from './bed';
+import { BedMap } from './globals';
 
 @Component({
   selector: 'app-root',

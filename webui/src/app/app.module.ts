@@ -9,17 +9,24 @@ import { PatientFormComponent } from './patient-form/patient-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PatientModule } from './patient/patient.module';
 import { RouterModule } from '@angular/router';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { BedMap } from './bed';
+import { BedMap } from './globals';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { BedLayoutComponent } from './bed-layout/bed-layout.component';
+import { CommonModule } from '@angular/common';
+import { PatientDetailComponent } from './patient-detail/patient-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PatientComponent,
-    PatientFormComponent,    
+    PatientFormComponent,
+    PageNotFoundComponent,
+    BedLayoutComponent,
+    PatientDetailComponent,    
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,    
     HttpClientModule,
     ReactiveFormsModule,    

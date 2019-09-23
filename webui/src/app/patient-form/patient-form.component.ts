@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { PatientComponent } from '../patient/patient.component';
 import { deepEqual } from 'assert';
-import { BedMap } from '../bed';
+import { BedMap } from '../globals';
 
 @Component({
   selector: 'app-patient-form',
