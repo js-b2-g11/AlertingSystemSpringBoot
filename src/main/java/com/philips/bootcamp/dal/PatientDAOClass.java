@@ -6,6 +6,7 @@ package com.philips.bootcamp.dal;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import com.philips.bootcamp.domain.Patient;
@@ -39,8 +40,12 @@ public class PatientDAOClass implements PatientDAO{
   }
 
   @Override
-  public int findBedId(String patientId) {
+  public int findBedId(String patientId) {    
     return (int) em.createQuery("select p.bedId from Patient p where p.id = :idParam").setParameter(Values.PATIENT_ID, patientId).getSingleResult();
+  }
+  
+  public String findPatientId(int bedId) {
+    return (String) em.createQuery("select p.id from Patient p where p.bedId =:bedIdParam").setParameter(Values.BED_ID, bedId).getSingleResult();   
   }
 
   @Override

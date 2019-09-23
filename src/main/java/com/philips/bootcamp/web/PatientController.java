@@ -32,7 +32,8 @@ public class PatientController {
   public void setService(PatientService service) {
     this.service = service;
   }
-
+  
+  @CrossOrigin
   @PostMapping(value = "/api/patient")
   public ResponseEntity<Patient> addAPatient(@RequestBody Patient toBeAdded) {
     try {
@@ -44,18 +45,31 @@ public class PatientController {
       return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
   }
-
-  @GetMapping(value = "/api/patient/bed/{patientId}")
-  public int findPatientBed(@PathVariable("patientId") String patientId) {
-    return service.findBedId(patientId);
+  
+  @CrossOrigin
+  @GetMapping(value="/api/patient/{patientId}")
+  public Patient getPatient(@PathVariable String patientId) {
+    return service.findById(patientId);
   }
 
+  @GetMapping(value = "/api/patient/bed/{patientId}")
+  public int findBedOfPatient(@PathVariable("patientId") String patientId) {
+    return service.findBedId(patientId);
+  }
+  
+  @CrossOrigin
+  @GetMapping(value="/api/bed/{bedId}")
+  public String findPatientOfBed(@PathVariable("bedId") int bedId) {
+    return service.findPatientId(bedId);
+  }
+    
   @CrossOrigin
   @GetMapping(value = "/api/patient")
   public List<Patient> displayRecords() {
     return service.findAll();
   }
-
+  
+  @CrossOrigin
   @DeleteMapping(value = "/api/patient/{patientId}")
   public ResponseEntity<Patient> dischargeAPatient(@PathVariable("patientId") String patientId) {
     final Patient patient = service.findById(patientId);

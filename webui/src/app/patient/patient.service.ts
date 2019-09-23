@@ -10,4 +10,20 @@ export class PatientService {
     public getPatients():Observable<any> {
         return this.http.get('http://localhost:8080/api/patient');
     }
+
+    public getPatient(patientId: number):Observable<any> {
+        return this.http.get('http://localhost:8080/api/patient/'+patientId);
+    }
+
+    public savePatient(patient: Patient):Observable<any> {
+        return this.http.post('http://localhost:8080/api/patient', patient);
+    }
+
+    public deletePatient(patientId: string) {
+        return this.http.delete('http://localhost:8080/api/patient/'+patientId);
+    }
+
+    public getPatientFromBedId(bedId: number) {
+        return this.http.get('http://localhost:8080/api/bed/'+bedId);
+    }
 }

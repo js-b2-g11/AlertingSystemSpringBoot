@@ -1,0 +1,20 @@
+div .bedbox {  
+    flex: 1 0 21%; /* explanation below */
+    margin: 5px;
+    height: 100px;  
+    /* width: 100px;     */
+    margin: 5px;
+}
+
+div .bedbox.occupied {
+    background-color: green;
+}
+
+div .bedbox.empty {
+    background-color: gray;
+}
+
+.bed-layout {
+    display: flex;
+    flex-wrap: wrap;
+}

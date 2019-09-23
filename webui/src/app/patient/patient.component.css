@@ -1,3 +1,13 @@
 td, th {
     border: 1px solid black;
 }
+
+.patientListContainer {
+    width: 100%;
+}
+
+.bedBox {
+    background-color: aqua;
+    width: 100px;
+    height: 100px;
+}

@@ -16,7 +16,7 @@ public class Values {
   public static final double MIN_TEMP=99.5;
   public static final double CRITICAL_TEMP=104;
 
-
+  public static final String BED_ID = "bedIdParam";
   public static final String PATIENT_ID = "idParam";
   public static final String IS_CRITICAL = "isCritical";
   public static final String TEMPERATURE_PARAM = "temperature";

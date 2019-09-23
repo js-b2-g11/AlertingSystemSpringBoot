@@ -45,4 +45,9 @@ public class PatientServiceImpl implements PatientService {
     patientDAO.deleteById(patientId);
   }
 
+  @Override
+  public String findPatientId(int bedId) {
+    return patientDAO.findPatientId(bedId);
+  }
+
 }

@@ -18,4 +18,6 @@ public interface PatientDAO {
   int findBedId(String patientId);
 
   void alarmSwitch(String vital, boolean isCritical, String patientId);
+
+  String findPatientId(int bedId);
 }
