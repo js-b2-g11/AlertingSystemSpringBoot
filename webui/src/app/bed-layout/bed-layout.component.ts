@@ -16,17 +16,17 @@ export class BedLayoutComponent implements OnInit {
 
   patientList: Patient[];
 
-  patient: Patient; 
+  patient: Patient;
 
   interval: any;
 
   constructor(private router: Router, private beds: BedMap, private patientService: PatientService) { }
 
   ngOnInit() {
-    this.getAllPatients();    
-    this.interval = setInterval(() => { 
-      this.getAllPatients();       
-  }, 5000);
+    this.getAllPatients();
+    this.interval = setInterval(() => {
+      this.getAllPatients();
+    }, 5000);    
   }
 
   public getAllPatients(): void {
