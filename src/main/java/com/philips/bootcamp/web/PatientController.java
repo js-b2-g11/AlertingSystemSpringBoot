@@ -108,7 +108,8 @@ public class PatientController {
       return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
   }
-
+  
+  @CrossOrigin  
   @PostMapping(value = "/api/patient/{patientId}/alarm/{vital}")
   public ResponseEntity<Patient> turnOffAlarm(@PathVariable String patientId,
       @PathVariable String vital) {

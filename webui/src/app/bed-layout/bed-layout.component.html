@@ -11,14 +11,15 @@
     <ng-container *ngFor="let bed of beds.bedMap | keyvalue">
         <div class="bedbox occupied" [ngStyle]="{'border': borderStyle}" *ngIf="bed.value; else emptyBlock"
             (click)="onClickBed(bed.key)">{{bed.key}}
+            <ng-container *ngFor="let patient of patientList">                
+                <div class="alertbox" *ngIf="bed.key === patient.bedId && (patient.temperatureAlert || patient.spo2Alert || patient.pulseRateAlert)">ALERT</div>
+            </ng-container>
         </div>
         <ng-template #emptyBlock>
             <div class="bedbox empty" (click)="onClickBed(bed.key)">{{bed.key}}</div>
         </ng-template>
     </ng-container>
 </div>
-
-<button (click)="setAlert()">Update</button>
 
 <!-- LAYOUT 2
 

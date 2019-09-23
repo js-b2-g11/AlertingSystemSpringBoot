@@ -31,4 +31,8 @@ export class PatientService {
     public getPatientVitalStatus(patientId: string, vitals: Vitals) {        
         return this.http.post('http://localhost:8080/api/patient/'+patientId+'/vitals', vitals);
     }
+
+    public turnOffAlarm(patientId: string, vital: string) {
+        return this.http.post('http://localhost:8080/api/patient/'+patientId+'/alarm/'+vital, {});
+    }
 }

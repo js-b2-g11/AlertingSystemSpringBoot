@@ -35,4 +35,10 @@ export class PatientDetailComponent implements OnInit {
     );
     this.router.navigate(['dashboard']);
   }
+
+  turnOffVitalAlarm(vital: string) {
+    this.patientService.turnOffAlarm(this.patient.patientId, vital).subscribe(
+      data => {console.log(data); this.router.navigate(['dashboard']);}
+    )
+  }
 }

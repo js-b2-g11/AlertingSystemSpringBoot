@@ -16,19 +16,23 @@ export class BedLayoutComponent implements OnInit {
 
   patientList: Patient[];
 
-  patient: Patient;
+  patient: Patient; 
 
-  borderStyle: string = "2px solid blue";
+  interval: any;
 
-  constructor(private router: Router, private beds: BedMap, private patientService: PatientService) {      
-  }
+  constructor(private router: Router, private beds: BedMap, private patientService: PatientService) { }
 
   ngOnInit() {
-    this.getAllPatients();
-    this.setAlert();
+    this.getAllPatients();    
+    this.interval = setInterval(() => { 
+      this.getAllPatients();       
+  }, 5000);
   }
 
   public getAllPatients(): void {
+    // this.patientService.getPatients()
+    //   .toPromise()
+    //   .then(response => this.patientList = response);    
     this.patientService.getPatients().subscribe((data) =>
       this.patientList = data);
   }
@@ -52,18 +56,17 @@ export class BedLayoutComponent implements OnInit {
     }
   }
 
-  setAlert() {
-    for (let bed of this.beds.bedMap.keys()) {
-      console.log(this.beds.bedMap.get(bed));
-      if (this.beds.bedMap.get(bed)) {
-        var patient = this.patientList.find(patient => patient.bedId === bed);
-        console.log(patient.pulseRateAlert);
-        if (patient.pulseRateAlert ||
-          patient.spo2Alert ||
-          patient.temperatureAlert) {            
-          this.borderStyle = "2px solid red";
-        }
-      }
-    }
-  }
+  // setAlert() {
+  //   for (let bed of this.beds.bedMap.keys()) {
+  //     console.log(this.beds.bedMap.get(bed));
+  //     if (this.beds.bedMap.get(bed)) {
+  //       var patient = this.patientList.find(patient => patient.bedId === bed);
+  //       console.log(patient.pulseRateAlert);
+  //       if (patient.pulseRateAlert ||
+  //         patient.spo2Alert ||
+  //         patient.temperatureAlert) {          
+  //       }
+  //     }
+  //   }
+  // }
 }

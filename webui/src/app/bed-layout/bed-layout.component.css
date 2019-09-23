@@ -4,17 +4,22 @@ div .bedbox {
     height: 100px;  
     /* width: 100px;     */
     margin: 5px;    
+    border: 2px solid black;
 }
 
 div .bedbox.occupied {
-    background-color: green;
+    background-color: #9DE0AD;
 }
 
 div .bedbox.empty {
-    background-color: gray;
+    background-color: #A8A7A7 ;
 }
 
 .bed-layout {
     display: flex;
     flex-wrap: wrap;
+}
+
+.alertbox {
+    color: red;
 }
