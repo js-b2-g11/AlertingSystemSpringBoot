@@ -122,4 +122,9 @@ public class TemperatureTest {
     final String actual = temperature.alertMessage(107);
     assertEquals("", actual);
   }
+  @Test
+  public void alertMessageValue110() {
+    final String actual = temperature.alertMessage(110);
+    assertEquals("", actual);
+  }
 }

@@ -8,7 +8,7 @@ import org.junit.Test;
 import com.philips.bootcamp.service.PulseRate;
 
 public class PulseRateTest {
-  PulseRate pulseRate = new PulseRate();;
+  PulseRate pulseRate = new PulseRate();
   @Test
   public void pulseRateValue39() {
     final boolean actual = pulseRate.checkRange(39);

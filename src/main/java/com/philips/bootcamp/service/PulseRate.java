@@ -10,7 +10,7 @@ public class PulseRate implements PatientVitalsService {
   @Override
   public boolean checkRange(float value) {
     boolean isCritical = false;
-    if (value < Values.MIN_PULSE_RATE || value > Values.MAX_PULSE_RATE) {
+    if (value < Values.MIN_PULSE_RATE || value > Values.MAX_PULSE_RATE || value > Values.CRITICAL_PULSE_RATE) {
       isCritical = true;
     }
     return isCritical;
