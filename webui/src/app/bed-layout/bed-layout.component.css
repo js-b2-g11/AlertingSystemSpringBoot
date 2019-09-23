@@ -23,3 +23,11 @@ div .bedbox.empty {
 .alertbox {
     color: red;
 }
+
+.heading-container {
+    margin: 5px;
+}
+
+.btn.btn-info {
+    margin: 2px;
+}
