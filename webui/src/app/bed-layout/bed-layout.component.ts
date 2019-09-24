@@ -28,6 +28,7 @@ export class BedLayoutComponent implements OnInit {
     this.interval = setInterval(() => {
       this.getAllPatients();
       this.postPatientVitals();
+      console.log(this.beds.alerts);
     }, 12000);
   }
 
@@ -69,9 +70,10 @@ export class BedLayoutComponent implements OnInit {
       }
       for (let patient of this.patientList) {
         if (!patient.pulseRateAlert && !patient.spo2Alert && !patient.temperatureAlert) {
-          temperature = Math.random() * (250) + 20;
-          spo2 = Math.random() * (100) + 20;
-          pulserate = Math.random() * (70) + 50;
+          temperature = Math.random() * (5.5) + 98;
+          spo2 = Math.random() * (60) + 20;
+          pulserate = Math.random() * (160) + 40;
+          console.log(temperature,spo2,pulserate);
           let vitals = new Vitals(temperature, spo2, pulserate);
           this.patientService.getPatientVitalStatus(patient.patientId, vitals).subscribe(
             data => { this.beds.alerts.set(patient.patientId, data)}

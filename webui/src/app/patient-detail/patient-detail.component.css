@@ -1,6 +1,9 @@
-.patientDetailContainer {
-    margin-left: 10px;
-    height: 40%;
+.patient-table-container {
+    padding-bottom: 60px;
+}
+
+.patient-table-container {
+    margin-left: 10px;    
 }
 
 .row {

@@ -20,4 +20,6 @@ public interface PatientDAO {
   void alarmSwitch(String vital, boolean isCritical, String patientId);
 
   String findPatientId(int bedId);
+
+  void resetAlarms();
 }

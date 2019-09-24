@@ -11,6 +11,8 @@ export class BedMap {
 
     alerts: Map<string, any> = new Map();
     
+    selectedLayout: number=1;
+
     bedMap: Map<number, boolean> = new Map();
 
     public constructor(private patientService: PatientService) {

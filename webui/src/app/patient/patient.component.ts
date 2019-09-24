@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Patient } from './patient';
 import { PatientService } from './patient.service';
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { BedMap } from '../globals';
-import { Vitals } from '../vitals';
+
 
 @Component({
   selector: 'app-patient',
@@ -42,24 +41,6 @@ export class PatientComponent implements OnInit {
         this.beds.bedMap.set(patient.bedId, false)
       }
     );    
-  }
-
-  public postPatientVitals() {
-    var temperature: number;
-    var spo2: number;
-    var pulserate: number;        
-    this.patientService.getPatients().subscribe(data => {
-    this.patientList = data;
-      for (let patient of this.patientList) {
-        temperature = Math.random() * (250) + 20;
-        spo2 = Math.random() * (100) + 20;
-        pulserate = Math.random() * (70) + 50;
-        let vitals = new Vitals(temperature, spo2, pulserate);
-        this.patientService.getPatientVitalStatus(patient.patientId, vitals).subscribe(
-          data => { }
-        );
-      }
-    });
   }
 
 }

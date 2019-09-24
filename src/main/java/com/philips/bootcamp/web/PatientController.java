@@ -32,7 +32,7 @@ public class PatientController {
   public void setService(PatientService service) {
     this.service = service;
   }
-  
+
   @CrossOrigin
   @PostMapping(value = "/api/patient")
   public ResponseEntity<Patient> addAPatient(@RequestBody Patient toBeAdded) {
@@ -45,7 +45,7 @@ public class PatientController {
       return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
   }
-  
+
   @CrossOrigin
   @GetMapping(value="/api/patient/{patientId}")
   public Patient getPatient(@PathVariable String patientId) {
@@ -56,19 +56,19 @@ public class PatientController {
   public int findBedOfPatient(@PathVariable("patientId") String patientId) {
     return service.findBedId(patientId);
   }
-  
+
   @CrossOrigin
   @GetMapping(value="/api/bed/{bedId}")
   public String findPatientOfBed(@PathVariable("bedId") int bedId) {
     return service.findPatientId(bedId);
   }
-    
+
   @CrossOrigin
   @GetMapping(value = "/api/patient")
   public List<Patient> displayRecords() {
     return service.findAll();
   }
-  
+
   @CrossOrigin
   @DeleteMapping(value = "/api/patient/{patientId}")
   public ResponseEntity<Patient> dischargeAPatient(@PathVariable("patientId") String patientId) {
@@ -80,7 +80,7 @@ public class PatientController {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
   }
-  
+
   @CrossOrigin
   @PostMapping(value = "/api/patient/{patientId}/vitals")
   public ResponseEntity<List<String>> monitorVitals(@PathVariable("patientId") String patientId,
@@ -108,8 +108,8 @@ public class PatientController {
       return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
   }
-  
-  @CrossOrigin  
+
+  @CrossOrigin
   @PostMapping(value = "/api/patient/{patientId}/alarm/{vital}")
   public ResponseEntity<Patient> turnOffAlarm(@PathVariable String patientId,
       @PathVariable String vital) {
@@ -127,6 +127,13 @@ public class PatientController {
       }
     }
     return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+  }
+
+  @CrossOrigin
+  @GetMapping(value = "/api/patient/resetalarm")
+  public ResponseEntity<Patient> resetPatientAlarms() {
+    service.resetAlarms();
+    return new ResponseEntity<>(HttpStatus.OK);
   }
 
 }

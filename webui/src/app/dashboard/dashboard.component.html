@@ -1,0 +1,30 @@
+<!-- <p>patient works!</p>
+ <button (click)="getAllPatients()">Get patient names</button> -->
+<!-- {{getAllPatients()}} -->
+
+<!--<table>
+    <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Bed no.</th>
+        <th>Age</th>
+        <th>Gender</th>        
+    </thead>
+    <tbody>
+        <tr *ngFor = "let patient of patientList">
+            <td>{{patient.patientId}}</td>
+            <td>{{patient.name}}</td>
+            <td>{{patient.bedId}}</td>
+            <td>{{patient.age}}</td>
+            <td>{{patient.gender}}</td>
+        </tr>
+    </tbody>    
+</table> -->
+<h3>Patients</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let patient of patientList" class="col-1-4">
+    <div class="module hero" (click)="redirect()" >
+      <h4>{{patient.patientId}}</h4>
+    </div>
+  </a>
+</div>
