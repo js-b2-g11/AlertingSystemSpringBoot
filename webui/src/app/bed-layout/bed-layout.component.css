@@ -1,23 +1,42 @@
-div .bedbox {  
-    flex: 1 0 21%; /* explanation below */
+div .bedbox-1{  
+    flex: 1 0 15%; /* explanation below */
     margin: 5px;
     height: 100px;  
-    /* width: 100px;     */
+    margin: 5px;    
+    border: 2px solid black;
+    -moz-box-align: center;
+}
+
+
+div .bedbox-2{  
+    flex: 2 5 40%; /* explanation below */
+    margin: 5px;
+    height: 100px;  
     margin: 5px;    
     border: 2px solid black;
 }
 
-div .bedbox.occupied {
+div .bedbox-1.occupied {
     background-color: #9DE0AD;
 }
 
-div .bedbox.empty {
+div .bedbox-1.empty {
+    background-color: #A8A7A7 ;
+}
+
+div .bedbox-2.occupied {
+    background-color: #9DE0AD;
+}
+
+div .bedbox-2.empty {
     background-color: #A8A7A7 ;
 }
 
 .bed-layout {
     display: flex;
     flex-wrap: wrap;
+    width: 50%;
+    margin: auto;
 }
 
 .alertbox {

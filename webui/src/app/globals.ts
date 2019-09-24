@@ -9,10 +9,12 @@ export class BedMap {
 
     selectedPatient: any;
     
+    selectedLayout: number=1;
+
     bedMap: Map<number, boolean> = new Map();
 
     public constructor(private patientService: PatientService) {
-        for (var i = 201; i <= 210; i++) {
+        for (var i = 201; i <= 212; i++) {
             this.bedMap.set(i, false);
         }        
         this.setBedMapValues();        
