@@ -10,7 +10,7 @@
         <select id="statusDropdown" formControlName="bedId">
             <ng-container *ngFor="let bed of beds.bedMap | keyvalue">
                 <option *ngIf="!bed.value" [ngValue]="bed.key">{{bed.key}}</option>
-            </ng-container>             
+            </ng-container>
         </select>
         <!-- <select ng-model='bedId'  ng-options='status for status in bedArray'></select> -->
     </label>
@@ -32,3 +32,7 @@
     <br>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+<div class="patientListNavigation">
+    <button type="button" class="btn btn-primary" routerLink="/dashboard">Back</button>
+</div>

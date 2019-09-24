@@ -73,6 +73,7 @@ export class BedLayoutComponent implements OnInit {
           temperature = Math.random() * (5.5) + 98;
           spo2 = Math.random() * (60) + 20;
           pulserate = Math.random() * (160) + 40;
+          console.log(temperature,spo2,pulserate);
           let vitals = new Vitals(temperature, spo2, pulserate);
           this.patientService.getPatientVitalStatus(patient.patientId, vitals).subscribe(
             data => { this.beds.alerts.set(patient.patientId, data)}

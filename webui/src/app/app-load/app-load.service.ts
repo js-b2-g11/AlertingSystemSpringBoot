@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import 'rxjs/add/operator/toPromise';
+// import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class AppLoadService {
@@ -12,7 +12,7 @@ export class AppLoadService {
           console.log(`initializeApp:: inside promise`);
 
           setTimeout(() => {
-            console.log(`initializeApp:: inside setTimeout`);            
+            console.log(`initializeApp:: inside setTimeout`);           
             resolve();
           }, 3000);
         });
@@ -23,8 +23,7 @@ export class AppLoadService {
     
     const promise = this.httpClient.get('http://localhost:8080/api/patient/resetalarm')
       .toPromise()
-      .then(data => {
-        
+      .then(data => {        
         return data;
       });
 

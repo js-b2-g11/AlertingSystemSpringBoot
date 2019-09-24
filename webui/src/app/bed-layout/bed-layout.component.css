@@ -37,6 +37,7 @@ div .bedbox-2.empty {
     flex-wrap: wrap;
     width: 50%;
     margin: auto;
+    padding-bottom: 65px;
 }
 
 .alertbox {
