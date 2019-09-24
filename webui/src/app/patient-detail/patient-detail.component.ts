@@ -41,7 +41,7 @@ export class PatientDetailComponent implements OnInit {
   }
 
   turnOffVitalAlarm(vital: string,button:any) {
-    button.disabled=true;
+    
     this.patientService.turnOffAlarm(this.patient.patientId, vital).subscribe(      
       data => {
         var alerts = [];
