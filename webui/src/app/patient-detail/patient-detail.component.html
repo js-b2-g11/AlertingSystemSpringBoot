@@ -31,27 +31,30 @@
                 </div>
             </ng-container>
         </div>
-
+    <div class="remove-alerts-container">
         <div *ngIf="patient.pulseRateAlert">
-            <button class="btn btn-warning" (click)="turnOffVitalAlarm('pulseRate')">Turn Off Pulserate Alarm</button>
+            <button class="btn btn-warning" (click)="turnOffVitalAlarm('pulseRate',this); clicked_pulserate=true" [disabled]="clicked_pulserate">Turn Off Pulserate Alarm</button>
         </div>
 
         <div *ngIf="patient.temperatureAlert">
-            <button class="btn btn-warning" (click)="turnOffVitalAlarm('temperature')">Turn Off Temperature
+            <button class="btn btn-warning" (click)="turnOffVitalAlarm('temperature',this); clicked_temp=true" [disabled]="clicked_temp">Turn Off Temperature
                 Alarm</button>
         </div>
 
         <div *ngIf="patient.spo2Alert">
-            <button class="btn btn-warning" (click)="turnOffVitalAlarm('spo2')">Turn Off Spo2 Alarm</button>
+            <button class="btn btn-warning" (click)="turnOffVitalAlarm('spo2',this); clicked_spo2=true" [disabled]="clicked_spo2">Turn Off Spo2 Alarm</button>
         </div>
+    </div>
 
+    <div class="navigate-btn-container">
         <div class="patientListNavigation">
-            <button type="button" class="btn btn-primary" routerLink="/dashboard">Back</button>
+            <button type="button" class="btn btn-primary" style="margin: 5px;" routerLink="/dashboard">Back</button>
         </div>
 
         <div class="deletePatientContainer">
-            <button type="buton" class="btn btn-danger" (click)="deletePatient()">Delete</button>
+            <button type="buton" class="btn btn-danger"  style="margin: 5px;" (click)="deletePatient()">Discharge Patient</button>
         </div>
+    </div>
     </ng-container>
 
 </div>

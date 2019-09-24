@@ -14,6 +14,9 @@ export class PatientDetailComponent implements OnInit {
   
   patient: Patient;  
 
+  clicked_temp: boolean=false;
+  clicked_spo2: boolean=false;
+  clicked_pulserate: boolean=false; 
   constructor(private router: Router, private beds: BedMap, private patientService: PatientService) {     
   }
 
@@ -37,7 +40,8 @@ export class PatientDetailComponent implements OnInit {
     this.router.navigate(['dashboard']);
   }
 
-  turnOffVitalAlarm(vital: string) {
+  turnOffVitalAlarm(vital: string,button:any) {
+    
     this.patientService.turnOffAlarm(this.patient.patientId, vital).subscribe(      
       data => {
         var alerts = [];
@@ -47,7 +51,8 @@ export class PatientDetailComponent implements OnInit {
             alerts.splice(i, 1);
           }
         }        
-        this.beds.alerts.set(this.patient.patientId, alerts); this.router.navigate(['dashboard']);
+        this.beds.alerts.set(this.patient.patientId, alerts); 
+        // this.router.navigate(['dashboard']);
       }
     )
   }
