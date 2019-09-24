@@ -28,6 +28,7 @@ export class BedLayoutComponent implements OnInit {
     this.interval = setInterval(() => {
       this.getAllPatients();
       this.postPatientVitals();
+      console.log(this.beds.alerts);
     }, 12000);
   }
 

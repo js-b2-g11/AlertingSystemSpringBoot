@@ -14,6 +14,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { BedLayoutComponent } from './bed-layout/bed-layout.component';
 import { CommonModule } from '@angular/common';
 import { PatientDetailComponent } from './patient-detail/patient-detail.component';
+import { AppLoadModule } from './app-load/app-load.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PatientDetailComponent } from './patient-detail/patient-detail.componen
     AppRoutingModule,    
     HttpClientModule,
     ReactiveFormsModule,    
-    RouterModule    
+    RouterModule,
+    AppLoadModule   
   ],
   providers: [BedMap],
   bootstrap: [AppComponent]
