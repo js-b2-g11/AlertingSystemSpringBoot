@@ -26,9 +26,9 @@ export class BedLayoutComponent implements OnInit {
   ngOnInit() {
     this.getAllPatients();
     this.interval = setInterval(() => {
-      this.getAllPatients();   
-      this.postPatientVitals();   
-    }, 5000);    
+      this.getAllPatients();
+      this.postPatientVitals();
+    }, 5000);
   }
 
   public getAllPatients(): void {
@@ -61,21 +61,26 @@ export class BedLayoutComponent implements OnInit {
   public postPatientVitals() {
     var temperature: number;
     var spo2: number;
-    var pulserate: number;        
+    var pulserate: number;
     this.patientService.getPatients().subscribe(data => {
-    this.patientList = data;
+      this.patientList = data;
+      for (var  i = 0; i < this.patientList.length; i++) {
+        console.log("maybe this works?");
+      }
       for (let patient of this.patientList) {
-        temperature = Math.random() * (250) + 20;
-        spo2 = Math.random() * (100) + 20;
-        pulserate = Math.random() * (70) + 50;
-        let vitals = new Vitals(temperature, spo2, pulserate);
-        this.patientService.getPatientVitalStatus(patient.patientId, vitals).subscribe(
-          data => { }
-        );
+        if (!patient.pulseRateAlert && !patient.spo2Alert && !patient.temperatureAlert) {
+          temperature = Math.random() * (250) + 20;
+          spo2 = Math.random() * (100) + 20;
+          pulserate = Math.random() * (70) + 50;
+          let vitals = new Vitals(temperature, spo2, pulserate);
+          this.patientService.getPatientVitalStatus(patient.patientId, vitals).subscribe(
+            data => { patient.alerts = data;}
+          );
+        }
       }
     });
   }
-  
+
   // setAlert() {
   //   for (let bed of this.beds.bedMap.keys()) {
   //     console.log(this.beds.bedMap.get(bed));
