@@ -1,11 +1,46 @@
 <ng-container *ngIf="patient; else emptyBlock">
-    <li>
-        <ul>{{patient.patientId}}</ul>
-        <ul>{{patient.name}}</ul>
-        <ul>{{patient.bedId}}</ul>
-        <ul>{{patient.age}}</ul>
-        <ul>{{patient.gender}}</ul>
-    </li>
+    <div class="patientDetailContainer">
+        <div class="row">
+            <div class="col-md-4">Patient ID</div>
+            <div class="col-md-4">{{patient.patientId}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">Bed ID</div>
+            <div class="col-md-4">{{patient.bedId}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">Name</div>
+            <div class="col-md-4">{{patient.name}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">Age</div>
+            <div class="col-md-4">{{patient.age}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">Gender</div>
+            <div class="col-md-4">{{patient.gender}}</div>
+        </div>
+    </div>
+
+    <div class="alert-box">
+        <ng-container *ngIf="beds.alerts">
+            <div class="alert alert-danger" role="alert" *ngFor="let alertIssue of beds.alerts.get(patient.patientId)">
+                {{alertIssue}}
+            </div>
+        </ng-container>
+    </div>
+
+    <div *ngIf="patient.pulseRateAlert">
+        <button class="btn btn-warning" (click)="turnOffVitalAlarm('pulseRate')">Turn Off Pulserate Alarm</button>
+    </div>
+
+    <div *ngIf="patient.temperatureAlert">
+        <button class="btn btn-warning" (click)="turnOffVitalAlarm('temperature')">Turn Off Temperature Alarm</button>
+    </div>
+
+    <div *ngIf="patient.spo2Alert">
+        <button class="btn btn-warning" (click)="turnOffVitalAlarm('spo2')">Turn Off Spo2 Alarm</button>
+    </div>
 
     <div class="patientListNavigation">
         <button type="button" class="btn btn-primary" routerLink="/dashboard">Back</button>

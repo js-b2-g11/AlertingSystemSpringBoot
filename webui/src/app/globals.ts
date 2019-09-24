@@ -8,14 +8,20 @@ export class BedMap {
     patientArray: Patient[];
 
     selectedPatient: any;
+
+    alerts: Map<string, any> = new Map();
     
     bedMap: Map<number, boolean> = new Map();
 
     public constructor(private patientService: PatientService) {
-        for (var i = 201; i <= 210; i++) {
+        for (var i = 201; i <= 212; i++) {
             this.bedMap.set(i, false);
         }        
-        this.setBedMapValues();        
+        this.setBedMapValues();             
+    }
+
+    public getMap(): Map<number, boolean> {
+      return this.bedMap;
     }
 
     setBedMapValues() {
@@ -30,4 +36,5 @@ export class BedMap {
             }      
         )
     }
-}
+    
+    }

@@ -1,0 +1,26 @@
+.patientDetailContainer {
+    margin-left: 10px;
+    height: 40%;
+}
+
+.row {
+    display: flex;
+    width: 70%;    
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;   
+}
+
+.col-md-4 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    background-color: rgba(86, 61, 124, .15);
+    border: 1px solid rgba(86, 61, 124, .2);
+}
+
+.alert-box {
+    margin: 5px;
+}
+
+.patientDetailContainer {
+    margin: 10px;
+}

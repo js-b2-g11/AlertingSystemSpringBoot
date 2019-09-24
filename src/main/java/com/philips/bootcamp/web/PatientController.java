@@ -80,7 +80,8 @@ public class PatientController {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
   }
-
+  
+  @CrossOrigin
   @PostMapping(value = "/api/patient/{patientId}/vitals")
   public ResponseEntity<List<String>> monitorVitals(@PathVariable("patientId") String patientId,
       @RequestBody Patient Vitals) {
@@ -107,7 +108,8 @@ public class PatientController {
       return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
   }
-
+  
+  @CrossOrigin  
   @PostMapping(value = "/api/patient/{patientId}/alarm/{vital}")
   public ResponseEntity<Patient> turnOffAlarm(@PathVariable String patientId,
       @PathVariable String vital) {
