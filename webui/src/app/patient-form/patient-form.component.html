@@ -1,7 +1,10 @@
 <form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
     <label>
         PatientId:
-        <input type="text" formControlName="patientId">
+        <input type="text" formControlName="patientId">        
+        <span *ngIf="(patientId.dirty || patientId.touched) && patientId.invalid && patientId.errors.required">
+            Patient ID is required.
+        </span>
     </label>
     <br>
     <label>
@@ -12,25 +15,40 @@
                 <option *ngIf="!bed.value" [ngValue]="bed.key">{{bed.key}}</option>
             </ng-container>
         </select>
+        <span *ngIf="(bedId.dirty || bedId.touched) && bedId.invalid && bedId.errors.required">
+            Bed ID is required.
+        </span>
         <!-- <select ng-model='bedId'  ng-options='status for status in bedArray'></select> -->
     </label>
     <br>
     <label>
         Name:
         <input type="text" formControlName="name">
+        <span *ngIf="(name.dirty || name.touched) && name.invalid && name.errors.required">
+            Patient name is required.
+        </span>
     </label>
     <br>
     <label>
         Age:
         <input type="text" formControlName="age">
+        <span *ngIf="(age.dirty || age.touched) && age.invalid && age.errors.required">
+            Patient age is required.
+        </span>
+        <span *ngIf="(age.dirty || age.touched) && age.invalid && age.errors.invalidAge">
+            Patient age has to be a number.
+        </span>
     </label>
     <br>
     <label>
         Gender:
         <input type="text" formControlName="gender">
+        <span *ngIf="(gender.dirty || gender.touched) && gender.invalid && gender.errors.required">
+            Patient gender is required.
+        </span>
     </label>
     <br>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!patientForm.valid">Submit</button>
 </form>
 
 <div class="patientListNavigation">

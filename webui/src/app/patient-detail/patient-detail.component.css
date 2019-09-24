@@ -1,5 +1,6 @@
-.patient-table-container {
+.patient-detail-container {
     padding-bottom: 60px;
+    overflow: auto;
 }
 
 .patient-table-container {
