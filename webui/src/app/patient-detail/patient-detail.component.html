@@ -33,16 +33,16 @@
         </div>
     <div class="remove-alerts-container">
         <div *ngIf="patient.pulseRateAlert">
-            <button class="btn btn-warning" (click)="turnOffVitalAlarm('pulseRate')">Turn Off Pulserate Alarm</button>
+            <button class="btn btn-warning" (click)="turnOffVitalAlarm('pulseRate',this); clicked_pulserate=true" [disabled]="clicked_pulserate">Turn Off Pulserate Alarm</button>
         </div>
 
         <div *ngIf="patient.temperatureAlert">
-            <button class="btn btn-warning" (click)="turnOffVitalAlarm('temperature')">Turn Off Temperature
+            <button class="btn btn-warning" (click)="turnOffVitalAlarm('temperature',this); clicked_temp=true" [disabled]="clicked_temp">Turn Off Temperature
                 Alarm</button>
         </div>
 
         <div *ngIf="patient.spo2Alert">
-            <button class="btn btn-warning" (click)="turnOffVitalAlarm('spo2')">Turn Off Spo2 Alarm</button>
+            <button class="btn btn-warning" (click)="turnOffVitalAlarm('spo2',this); clicked_spo2=true" [disabled]="clicked_spo2">Turn Off Spo2 Alarm</button>
         </div>
     </div>
 
