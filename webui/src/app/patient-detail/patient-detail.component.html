@@ -1,5 +1,5 @@
 <ng-container *ngIf="patient; else emptyBlock">
-    <div class="patientDetailContainer row">
+    <div class="patientDetailContainer">
         <div class="row">
             <div class="col-md-4">Patient ID</div>
             <div class="col-md-4">{{patient.patientId}}</div>
@@ -22,7 +22,13 @@
         </div>
     </div>
 
-    {{patient.alerts}}
+    <div class="alert-box">
+        <ng-container *ngIf="beds.alerts">
+            <div class="alert alert-danger" role="alert" *ngFor="let alertIssue of beds.alerts.get(patient.patientId)">
+                {{alertIssue}}
+            </div>
+        </ng-container>
+    </div>
 
     <div *ngIf="patient.pulseRateAlert">
         <button class="btn btn-warning" (click)="turnOffVitalAlarm('pulseRate')">Turn Off Pulserate Alarm</button>

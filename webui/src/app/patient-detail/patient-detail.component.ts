@@ -12,9 +12,10 @@ import { Router } from '@angular/router';
 })
 export class PatientDetailComponent implements OnInit {
   
-  patient: Patient;
+  patient: Patient;  
 
-  constructor(private router: Router, private beds: BedMap, private patientService: PatientService) { }
+  constructor(private router: Router, private beds: BedMap, private patientService: PatientService) {     
+  }
 
   ngOnInit() {
     this.getPatient();
@@ -30,15 +31,24 @@ export class PatientDetailComponent implements OnInit {
 
   deletePatient() {
     this.patientService.deletePatient(this.patient.patientId).subscribe (
-      data => {         
+      data => {                 
         this.beds.bedMap.set(this.patient.bedId, false)}        
     );
     this.router.navigate(['dashboard']);
   }
 
   turnOffVitalAlarm(vital: string) {
-    this.patientService.turnOffAlarm(this.patient.patientId, vital).subscribe(
-      data => {console.log(data); this.router.navigate(['dashboard']);}
+    this.patientService.turnOffAlarm(this.patient.patientId, vital).subscribe(      
+      data => {
+        var alerts = [];
+        alerts = this.beds.alerts.get(this.patient.patientId);        
+        for (var i = 0; i < alerts.length; i++) {
+          if (alerts[i].toLowerCase().includes(vital.toLowerCase())) {
+            alerts.splice(i, 1);
+          }
+        }        
+        this.beds.alerts.set(this.patient.patientId, alerts); this.router.navigate(['dashboard']);
+      }
     )
   }
 }
