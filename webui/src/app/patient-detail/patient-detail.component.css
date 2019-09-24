@@ -27,3 +27,15 @@
 .patientDetailContainer {
     margin: 10px;
 }
+
+.btn-warning{
+    margin: 5px;
+}
+
+.remove-alerts-container{
+    display: flex;
+}
+
+.navigate-btn-container{
+    display: flex;
+}
