@@ -21,4 +21,6 @@ public interface PatientService {
 
   String findPatientId(int bedId);
 
+  void resetAlarms();
+
 }

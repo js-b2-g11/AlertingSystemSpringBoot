@@ -6,7 +6,6 @@ package com.philips.bootcamp.dal;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import com.philips.bootcamp.domain.Patient;
@@ -40,12 +39,13 @@ public class PatientDAOClass implements PatientDAO{
   }
 
   @Override
-  public int findBedId(String patientId) {    
+  public int findBedId(String patientId) {
     return (int) em.createQuery("select p.bedId from Patient p where p.id = :idParam").setParameter(Values.PATIENT_ID, patientId).getSingleResult();
   }
-  
+
+  @Override
   public String findPatientId(int bedId) {
-    return (String) em.createQuery("select p.id from Patient p where p.bedId =:bedIdParam").setParameter(Values.BED_ID, bedId).getSingleResult();   
+    return (String) em.createQuery("select p.id from Patient p where p.bedId =:bedIdParam").setParameter(Values.BED_ID, bedId).getSingleResult();
   }
 
   @Override
@@ -57,5 +57,10 @@ public class PatientDAOClass implements PatientDAO{
     } else if(vital.equals("pulseRate")) {
       em.createQuery("update Patient p set p.pulseRateAlert = :isCritical where p.id = :idParam").setParameter(Values.PATIENT_ID, patientId).setParameter(Values.IS_CRITICAL, isCritical).executeUpdate();
     }
+  }
+
+  @Override
+  public void resetAlarms() {
+    em.createQuery("update Patient set pulserate_alert = 0, temperature_alert = 0, spo2_alert = 0").executeUpdate();
   }
 }

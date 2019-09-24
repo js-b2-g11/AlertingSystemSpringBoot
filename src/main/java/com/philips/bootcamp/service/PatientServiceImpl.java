@@ -50,4 +50,9 @@ public class PatientServiceImpl implements PatientService {
     return patientDAO.findPatientId(bedId);
   }
 
+  @Override
+  public void resetAlarms() {
+    patientDAO.resetAlarms();
+  }
+
 }

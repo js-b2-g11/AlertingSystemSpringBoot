@@ -129,4 +129,11 @@ public class PatientController {
     return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
   }
 
+  @CrossOrigin
+  @GetMapping(value = "/api/patient/resetalarm")
+  public ResponseEntity<Patient> resetPatientAlarms() {
+    service.resetAlarms();
+    return new ResponseEntity<>(HttpStatus.OK);
+  }
+
 }
