@@ -14,7 +14,7 @@ export class AppLoadService {
           setTimeout(() => {
             console.log(`initializeApp:: inside setTimeout`);           
             resolve();
-          }, 3000);
+          }, 2000);
         });
   }
 

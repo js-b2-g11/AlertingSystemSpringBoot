@@ -29,7 +29,7 @@ export class BedLayoutComponent implements OnInit {
       this.getAllPatients();
       this.postPatientVitals();
       console.log(this.beds.alerts);
-    }, 12000);
+    }, 10000);
   }
 
   public getAllPatients(): void {
