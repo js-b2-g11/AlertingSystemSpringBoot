@@ -10,7 +10,7 @@ public class Temperature implements PatientVitalsService {
   @Override
   public boolean checkRange(float value) {
     boolean isCritical = false;
-    if (value >= Values.MIN_TEMP && value < Values.MAX_TEMP) {
+    if (value >= Values.MIN_TEMP) {
       isCritical = true;
     }
     return isCritical;
@@ -21,7 +21,7 @@ public class Temperature implements PatientVitalsService {
     String alertMessage = "";
     if (value > Values.MIN_TEMP && value < Values.CRITICAL_TEMP) {
       alertMessage = "Critical Temperature value: Fever";
-    } else if (value >= Values.CRITICAL_TEMP && value < Values.MAX_TEMP ) {
+    } else if (value >= Values.CRITICAL_TEMP) {
       alertMessage = "Critical Temperature value: Hyperpyrexia";
     }
     return alertMessage;
