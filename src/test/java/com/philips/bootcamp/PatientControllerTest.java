@@ -86,15 +86,15 @@ public class PatientControllerTest {
 
   @Test
   public void monitorPulseRate() {
-    final PatientController pc = new PatientController();
-    final PatientService ps = Mockito.mock(PatientService.class);
-    Mockito.when(ps.findById("patient1")).thenReturn(Mockito.mock(Patient.class));
-    pc.setService(ps);
+    final PatientController pcPulseRate = new PatientController();
+    final PatientService psPulseRate = Mockito.mock(PatientService.class);
+    Mockito.when(psPulseRate.findById("patient1")).thenReturn(Mockito.mock(Patient.class));
+    pcPulseRate.setService(psPulseRate);
     final Patient patient = new Patient();
     patient.setTemperature(97.0f);
     patient.setSpo2(100.f);
     patient.setPulseRate(20.0f);
-    final ResponseEntity<List<String>> response = pc.monitorVitals("patient1", patient);
+    final ResponseEntity<List<String>> response = pcPulseRate.monitorVitals("patient1", patient);
     assertEquals(HttpStatus.OK, response.getStatusCode());
   }
 

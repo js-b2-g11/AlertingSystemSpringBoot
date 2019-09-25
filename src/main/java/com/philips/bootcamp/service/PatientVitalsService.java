@@ -4,6 +4,6 @@
 package com.philips.bootcamp.service;
 
 public interface PatientVitalsService {
-  boolean checkRange(float value);
+  boolean isCritical(float value);
   String alertMessage(float value);
 }

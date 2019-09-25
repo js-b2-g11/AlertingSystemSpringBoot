@@ -12,55 +12,55 @@ public class Spo2Test {
 
   @Test
   public void spo2Value96_notCritical() {
-    final boolean actual = spo2.checkRange(96);
+    final boolean actual = spo2.isCritical(96);
     assertEquals(false, actual);
   }
 
   @Test
   public void spo2Value95_notCritical() {
-    final boolean actual = spo2.checkRange(95);
+    final boolean actual = spo2.isCritical(95);
     assertEquals(false, actual);
   }
 
   @Test
   public void spo2Value94_notCritical() {
-    final boolean actual = spo2.checkRange(94);
+    final boolean actual = spo2.isCritical(94);
     assertEquals(false, actual);
   }
 
   @Test
   public void spo2Value91_notCritical() {
-    final boolean actual = spo2.checkRange(91);
+    final boolean actual = spo2.isCritical(91);
     assertEquals(false, actual);
   }
 
   @Test
   public void spo2Value90_Critical() {
-    final boolean actual = spo2.checkRange(90);
+    final boolean actual = spo2.isCritical(90);
     assertEquals(true, actual);
   }
 
   @Test
   public void spo2Value89_Critical() {
-    final boolean actual = spo2.checkRange(89);
+    final boolean actual = spo2.isCritical(89);
     assertEquals(true, actual);
   }
 
   @Test
   public void spo2Value71_Critical() {
-    final boolean actual = spo2.checkRange(71);
+    final boolean actual = spo2.isCritical(71);
     assertEquals(true, actual);
   }
 
   @Test
   public void spo2Value70() {
-    final boolean actual = spo2.checkRange(70);
+    final boolean actual = spo2.isCritical(70);
     assertEquals(true, actual);
   }
 
   @Test
   public void spo2Value69_Critical() {
-    final boolean actual = spo2.checkRange(69);
+    final boolean actual = spo2.isCritical(69);
     assertEquals(true, actual);
   }
 

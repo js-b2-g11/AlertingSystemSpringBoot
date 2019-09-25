@@ -11,67 +11,67 @@ public class TemperatureTest {
   Temperature temperature = new Temperature();
   @Test
   public void temperatureValue96_notCritical() {
-    final boolean actual = temperature.checkRange(96);
+    final boolean actual = temperature.isCritical(96);
     assertEquals(false, actual);
   }
 
   @Test
   public void temperatureValue97_notCritical() {
-    final boolean actual = temperature.checkRange(97);
+    final boolean actual = temperature.isCritical(97);
     assertEquals(false, actual);
   }
 
   @Test
   public void temperatureValue98_notCritical() {
-    final boolean actual = temperature.checkRange(98);
+    final boolean actual = temperature.isCritical(98);
     assertEquals(false, actual);
   }
 
   @Test
   public void temperatureValue985_notCritical() {
-    final boolean actual = temperature.checkRange(98.5f);
+    final boolean actual = temperature.isCritical(98.5f);
     assertEquals(false, actual);
   }
 
   @Test
   public void temperatureValue995_Critical() {
-    final boolean actual = temperature.checkRange(99.5f);
+    final boolean actual = temperature.isCritical(99.5f);
     assertEquals(true, actual);
   }
 
   @Test
   public void temperatureValue1005_Critical() {
-    final boolean actual = temperature.checkRange(100.5f);
+    final boolean actual = temperature.isCritical(100.5f);
     assertEquals(true, actual);
   }
 
   @Test
   public void temperatureValue103_Critical() {
-    final boolean actual = temperature.checkRange(103);
+    final boolean actual = temperature.isCritical(103);
     assertEquals(true, actual);
   }
 
   @Test
   public void temperatureValue104_Critical() {
-    final boolean actual = temperature.checkRange(104);
+    final boolean actual = temperature.isCritical(104);
     assertEquals(true, actual);
   }
 
   @Test
   public void temperatureValue105_Critical() {
-    final boolean actual = temperature.checkRange(105);
+    final boolean actual = temperature.isCritical(105);
     assertEquals(true, actual);
   }
 
   @Test
   public void temperatureValue106_Critical() {
-    final boolean actual = temperature.checkRange(106);
+    final boolean actual = temperature.isCritical(106);
     assertEquals(true, actual);
   }
 
   @Test
   public void temperatureValue107_Critical() {
-    final boolean actual = temperature.checkRange(107);
+    final boolean actual = temperature.isCritical(107);
     assertEquals(true, actual);
   }
 
