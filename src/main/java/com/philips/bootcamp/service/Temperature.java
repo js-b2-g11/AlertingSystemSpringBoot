@@ -8,7 +8,7 @@ import com.philips.bootcamp.utils.Values;
 public class Temperature implements PatientVitalsService {
 
   @Override
-  public boolean checkRange(float value) {
+  public boolean isCritical(float value) {
     boolean isCritical = false;
     if (value >= Values.MIN_TEMP) {
       isCritical = true;
