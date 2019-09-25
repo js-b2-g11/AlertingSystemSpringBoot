@@ -1,0 +1,19 @@
+span {    
+    color: red;
+    font-size: 14px;
+}
+
+form {
+    width: 35%;
+    margin-left: 20px;
+    padding-bottom: 60px;
+    overflow: auto;
+}
+
+.button-container button {
+    margin: 6px;
+}
+
+select {
+    width: auto;
+}
