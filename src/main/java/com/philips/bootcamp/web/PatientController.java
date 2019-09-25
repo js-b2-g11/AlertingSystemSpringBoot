@@ -47,6 +47,18 @@ public class PatientController {
   }
 
   @CrossOrigin
+  @DeleteMapping(value = "/api/patient/{patientId}")
+  public ResponseEntity<Patient> dischargeAPatient(@PathVariable("patientId") String patientId) {
+    final Patient patient = service.findById(patientId);
+    if (patient != null) {
+      service.dischargePatient(patientId);
+      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    } else {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+  }
+
+  @CrossOrigin
   @GetMapping(value="/api/patient/{patientId}")
   public Patient getPatient(@PathVariable String patientId) {
     return service.findById(patientId);
@@ -67,18 +79,6 @@ public class PatientController {
   @GetMapping(value = "/api/patient")
   public List<Patient> displayRecords() {
     return service.findAll();
-  }
-
-  @CrossOrigin
-  @DeleteMapping(value = "/api/patient/{patientId}")
-  public ResponseEntity<Patient> dischargeAPatient(@PathVariable("patientId") String patientId) {
-    final Patient patient = service.findById(patientId);
-    if (patient != null) {
-      service.dischargePatient(patientId);
-      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    } else {
-      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
   }
 
   @CrossOrigin
@@ -135,5 +135,4 @@ public class PatientController {
     service.resetAlarms();
     return new ResponseEntity<>(HttpStatus.OK);
   }
-
 }

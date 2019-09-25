@@ -36,6 +36,17 @@ public class PatientControllerTest {
   }
 
   @Test
+  public void addNewPatient() {
+    final PatientController pc = new PatientController();
+    final PatientService ps = Mockito.mock(PatientService.class);
+    final Patient p = new Patient("101","hello",12,"male");
+    Mockito.when(ps.addNewPatient(p)).thenReturn(null);
+    pc.setService(ps);
+    final ResponseEntity<Patient> response = pc.addAPatient(p);
+    assertEquals(HttpStatus.CREATED, response.getStatusCode());
+  }
+
+  @Test
   public void monitorVitalsForNonExistingPatient() {
     final PatientController pc = new PatientController();
     final PatientService ps = Mockito.mock(PatientService.class);
