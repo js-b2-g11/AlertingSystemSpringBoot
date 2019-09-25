@@ -24,12 +24,13 @@ export class BedLayoutComponent implements OnInit {
   constructor(private router: Router, private beds: BedMap, private patientService: PatientService) { }
 
   ngOnInit() {
-    this.getAllPatients();
+    this.beds.selectedPatient = undefined;
+    this.getAllPatients();    
     this.interval = setInterval(() => {
       this.getAllPatients();
       this.postPatientVitals();
       console.log(this.beds.alerts);
-    }, 10000);
+    }, 18000);
   }
 
   public getAllPatients(): void {
@@ -69,7 +70,7 @@ export class BedLayoutComponent implements OnInit {
         console.log("maybe this works?");
       }
       for (let patient of this.patientList) {
-        if (!patient.pulseRateAlert && !patient.spo2Alert && !patient.temperatureAlert) {
+        if (!patient.pulseRateAlert && !patient.spo2Alert && !patient.temperatureAlert && (this.beds.selectedPatient === undefined)) {
           temperature = Math.random() * (5.5) + 98;
           spo2 = Math.random() * (60) + 20;
           pulserate = Math.random() * (160) + 40;

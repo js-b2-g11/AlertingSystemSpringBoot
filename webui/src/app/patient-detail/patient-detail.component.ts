@@ -36,7 +36,7 @@ export class PatientDetailComponent implements OnInit {
     this.patientService.deletePatient(this.patient.patientId).subscribe (
       data => {                 
         this.beds.bedMap.set(this.patient.bedId, false)}        
-    );
+    );    
     this.router.navigate(['dashboard']);
   }
 
@@ -51,8 +51,7 @@ export class PatientDetailComponent implements OnInit {
             alerts.splice(i, 1);
           }
         }        
-        this.beds.alerts.set(this.patient.patientId, alerts); 
-        // this.router.navigate(['dashboard']);
+        this.beds.alerts.set(this.patient.patientId, alerts);         
       }
     )
   }
