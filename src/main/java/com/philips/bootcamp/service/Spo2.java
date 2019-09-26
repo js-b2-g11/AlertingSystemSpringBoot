@@ -8,7 +8,7 @@ import com.philips.bootcamp.utils.Values;
 public class Spo2 implements PatientVitalsService {
 
   @Override
-  public boolean checkRange(float value) {
+  public boolean isCritical(float value) {
     boolean isCritical = false;
     if (value < Values.MIN_SPO2 || (value >= Values.MIN_SPO2 && value <= Values.MAX_SPO2)) {
       isCritical = true;

@@ -28,6 +28,7 @@ public class PatientDAOClass implements PatientDAO{
     return em.find(Patient.class, patientId);
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public List<Patient> findAll() {
     return em.createQuery("select p from Patient p").getResultList();

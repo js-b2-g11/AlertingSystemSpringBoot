@@ -8,7 +8,7 @@ import com.philips.bootcamp.utils.Values;
 public class PulseRate implements PatientVitalsService {
 
   @Override
-  public boolean checkRange(float value) {
+  public boolean isCritical(float value) {
     boolean isCritical = false;
     if (value < Values.MIN_PULSE_RATE || value >= Values.MAX_PULSE_RATE) {
       isCritical = true;

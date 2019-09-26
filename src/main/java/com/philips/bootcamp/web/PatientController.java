@@ -91,15 +91,15 @@ public class PatientController {
     final Patient patient = service.findById(patientId);
     final List<String> alerts = new ArrayList<>();
     if (patient != null) {
-      if (temperatureObj.checkRange(Vitals.getTemperatureVal())) {
+      if (temperatureObj.isCritical(Vitals.getTemperatureVal())) {
         service.alarmSwitch(Values.TEMPERATURE_PARAM, true, patientId);
         alerts.add(temperatureObj.alertMessage(Vitals.getTemperatureVal()));
       }
-      if (spo2Obj.checkRange(Vitals.getSpo2Val())) {
+      if (spo2Obj.isCritical(Vitals.getSpo2Val())) {
         service.alarmSwitch(Values.SPO2PARAM, true, patientId);
         alerts.add(spo2Obj.alertMessage(Vitals.getSpo2Val()));
       }
-      if (pulseRateObj.checkRange(Vitals.getPulseRateVal())) {
+      if (pulseRateObj.isCritical(Vitals.getPulseRateVal())) {
         service.alarmSwitch(Values.PULSERATEPARAM, true, patientId);
         alerts.add(pulseRateObj.alertMessage(Vitals.getPulseRateVal()));
       }
