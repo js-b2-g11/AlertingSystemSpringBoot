@@ -10,7 +10,6 @@ export class AppLoadService {
   initializeApp(): Promise<any> {
     return new Promise((resolve, reject) => {
           console.log(`initializeApp:: inside promise`);
-
           setTimeout(() => {
             console.log(`initializeApp:: inside setTimeout`);           
             resolve();
@@ -19,8 +18,7 @@ export class AppLoadService {
   }
 
   getSettings(): Promise<any> {
-    console.log(`getSettings:: before http.get call`);
-    
+    console.log(`getSettings:: before http.get call`);    
     const promise = this.httpClient.get('http://localhost:8080/api/patient/resetalarm')
       .toPromise()
       .then(data => {        

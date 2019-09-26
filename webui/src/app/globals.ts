@@ -1,42 +1,38 @@
 import { Injectable } from "@angular/core";
 import { PatientService } from './patient/patient.service';
-import { Patient } from './patient/patient';
+import { Patient } from './model/patient';
 
 @Injectable()
-export class BedMap {
+export class Globals {
 
-    patientArray: Patient[];
+  patientArray: Patient[];
 
-    selectedPatient: any;
+  selectedPatient: any;
 
-    alerts: Map<string, any> = new Map();
-    
-    selectedLayout: number=1;
+  alerts: Map<string, any> = new Map();
 
-    bedMap: Map<number, boolean> = new Map();
+  selectedLayout = 1;
 
-    public constructor(private patientService: PatientService) {
-        for (var i = 201; i <= 212; i++) {
-            this.bedMap.set(i, false);
-        }        
-        this.setBedMapValues();             
+  bedMap: Map<number, boolean> = new Map();
+
+  public constructor(private patientService: PatientService) {
+    for (var i = 201; i <= 212; i++) {
+      this.bedMap.set(i, false);
     }
+    this.setBedMapValues();
+  }
 
-    public getMap(): Map<number, boolean> {
-      return this.bedMap;
-    }
+  setBedMapValues() {
+    this.patientService.getPatients().subscribe(
+      data => {
+        this.patientArray = data;
+        if (this.patientArray) {
+          for (let patient of this.patientArray) {
+            this.bedMap.set(patient.bedId, true);
+          }
+        }
+      }
+    )
+  }
 
-    setBedMapValues() {
-        this.patientService.getPatients().subscribe(
-            data => {
-              this.patientArray = data;
-              if (this.patientArray) {
-                for(let patient of this.patientArray) {
-                  this.bedMap.set(patient.bedId, true);
-                }
-              }              
-            }      
-        )
-    }
-    
-    }
+}

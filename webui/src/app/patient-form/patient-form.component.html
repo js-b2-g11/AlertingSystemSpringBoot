@@ -3,14 +3,14 @@
     <h1 class="display-4">Enter patient details</h1>
 
     <div class="form-group">
-        <label>Patient ID</label>
+        <label>Patient ID<span class="required-asterisk">*</span></label>
         <input type="text" formControlName="patientId" class="form-control">
         <span *ngIf="(patientId.dirty || patientId.touched) && patientId.invalid && patientId.errors.required">
             Patient ID is required.
         </span>
     </div>
     <div class="form-group">
-        <label>Bed ID</label>
+        <label>Bed ID<span class="required-asterisk">*</span></label>
         <select id="statusDropdown" class="form-control" formControlName="bedId">
             <ng-container *ngFor="let bed of beds.bedMap | keyvalue">
                 <option *ngIf="!bed.value" [ngValue]="bed.key">{{bed.key}}</option>
@@ -29,7 +29,7 @@
     </div>
 
     <div class="form-group">
-        <label>Age</label>
+        <label>Age<span class="required-asterisk">*</span></label>
         <input type="text" class="form-control" formControlName="age">
         <span *ngIf="(age.dirty || age.touched) && age.invalid && age.errors.required">
             Patient age is required.

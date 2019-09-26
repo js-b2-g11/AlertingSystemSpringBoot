@@ -11,7 +11,7 @@ div .bedbox-1{
 div .bedbox-2{  
     flex: 2 5 40%; /* explanation below */
     margin: 5px;
-    height: 100px;  
+    height: 80px;  
     margin: 5px;    
     border: 2px solid black;
 }
@@ -32,10 +32,18 @@ div .bedbox-2.empty {
     background-color: #A8A7A7 ;
 }
 
-.bed-layout {
+.bed-layout-1 {
     display: flex;
     flex-wrap: wrap;
     width: 50%;
+    margin: auto;
+    padding-bottom: 65px;
+}
+
+.bed-layout-2 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 25%;
     margin: auto;
     padding-bottom: 65px;
 }

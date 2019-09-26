@@ -9,7 +9,7 @@
     </button>
 </div>
 
-<div class="bed-layout" *ngIf="beds.selectedLayout === 1">
+<div class="bed-layout-1" *ngIf="beds.selectedLayout === 1">
     <ng-container *ngFor="let bed of beds.bedMap | keyvalue">
         <div class="bedbox-1 occupied" [ngStyle]="{'border': borderStyle}" *ngIf="bed.value; else emptyBlock"
             (click)="onClickBed(bed.key)">{{bed.key}}
@@ -25,7 +25,7 @@
     </ng-container>
 </div>
 
-<div class="bed-layout" *ngIf="beds.selectedLayout === 2">
+<div class="bed-layout-2" *ngIf="beds.selectedLayout === 2">
     <ng-container *ngFor="let bed of beds.bedMap | keyvalue">
         <div class="bedbox-2 occupied" [ngStyle]="{'border': borderStyle}" *ngIf="bed.value; else emptyBlock"
             (click)="onClickBed(bed.key)">{{bed.key}}

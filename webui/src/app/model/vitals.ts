@@ -9,3 +9,4 @@ export class Vitals {
         this.pulserate = pulserate;
     }
 }
+

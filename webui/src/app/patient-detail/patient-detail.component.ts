@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientService } from '../patient/patient.service';
-import { BedMap } from '../globals';
-import { Patient } from '../patient/patient';
+import { Globals } from '../globals';
+import { Patient } from '../model/patient';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,21 +11,20 @@ import { Router } from '@angular/router';
   providers: [PatientService]
 })
 export class PatientDetailComponent implements OnInit {
-  
-  patient: Patient;  
 
-  clicked_temp: boolean=false;
-  clicked_spo2: boolean=false;
-  clicked_pulserate: boolean=false; 
-  constructor(private router: Router, private beds: BedMap, private patientService: PatientService) {     
-  }
+  patient: Patient;
+  isClickedTemp = false;
+  isClickedSpo2 = false;
+  isClickedPulseRate = false;
+
+  constructor(private router: Router, private beds: Globals, private patientService: PatientService) { }
 
   ngOnInit() {
     this.getPatient();
   }
 
   getPatient() {
-    this.patientService.getPatient(this.beds.selectedPatient).subscribe (
+    this.patientService.getPatient(this.beds.selectedPatient).subscribe(
       data => {
         this.patient = data;
       }
@@ -33,25 +32,26 @@ export class PatientDetailComponent implements OnInit {
   }
 
   deletePatient() {
-    this.patientService.deletePatient(this.patient.patientId).subscribe (
-      data => {                 
-        this.beds.bedMap.set(this.patient.bedId, false)}        
-    );    
+    this.patientService.deletePatient(this.patient.patientId).subscribe(
+      data => {
+        this.beds.bedMap.set(this.patient.bedId, false)
+      }
+    );
     this.router.navigate(['dashboard']);
   }
 
-  turnOffVitalAlarm(vital: string,button:any) {
-    
-    this.patientService.turnOffAlarm(this.patient.patientId, vital).subscribe(      
+  turnOffVitalAlarm(vital: string, button: any) {
+
+    this.patientService.turnOffAlarm(this.patient.patientId, vital).subscribe(
       data => {
-        var alerts = [];
-        alerts = this.beds.alerts.get(this.patient.patientId);        
-        for (var i = 0; i < alerts.length; i++) {
+        let alerts = [];
+        alerts = this.beds.alerts.get(this.patient.patientId);
+        for (let i = 0; i < alerts.length; i++) {
           if (alerts[i].toLowerCase().includes(vital.toLowerCase())) {
             alerts.splice(i, 1);
           }
-        }        
-        this.beds.alerts.set(this.patient.patientId, alerts);         
+        }
+        this.beds.alerts.set(this.patient.patientId, alerts);
       }
     )
   }

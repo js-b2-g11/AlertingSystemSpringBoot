@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { PatientService } from './patient/patient.service';
-import { Patient } from './patient/patient';
+import { Patient } from './model/patient';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PatientFormComponent } from './patient-form/patient-form.component';
-import { BedMap } from './globals';
+import { Globals } from './globals';
 
 @Component({
   selector: 'app-root',
@@ -13,26 +13,7 @@ import { BedMap } from './globals';
   providers: [PatientService]
 })
 export class AppComponent {
-  
+
   title = 'Alert System';
-  
-  patientArray: Patient[];
-
-  // beds: Bed[] = [];
-
-  data: Patient[];  
-
-  public constructor(private beds: BedMap, private patientService: PatientService) {    
-  }
-
-  ngOnInit() {
-    console.log(this.beds.bedMap);         
-  }   
-
-  bedNumberArray: number[] = [];
-
-  storeArray() {
-    
-  }
 
 }

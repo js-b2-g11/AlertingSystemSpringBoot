@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PatientComponent } from './patient.component';
 import { PatientService } from './patient.service';
 
-@NgModule ({
+@NgModule({
     imports: [
         BrowserModule,
         CommonModule
@@ -19,5 +19,5 @@ import { PatientService } from './patient.service';
 })
 
 export class PatientModule {
-    
+
 }

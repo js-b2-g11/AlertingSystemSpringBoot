@@ -1,9 +1,10 @@
 import { Component, OnInit, Directive, Input } from '@angular/core';
 import { PatientService } from '../patient/patient.service';
-import { Patient } from '../patient/patient';
-import { BedMap } from '../globals';
+import { Patient } from '../model/patient';
+import { Globals } from '../globals';
 import { Router } from '@angular/router';
-import { Vitals } from '../vitals';
+import { Vitals } from '../model/vitals';
+
 
 @Component({
   selector: 'app-bed-layout',
@@ -21,11 +22,11 @@ export class BedLayoutComponent implements OnInit {
 
   interval: any;
 
-  constructor(private router: Router, private beds: BedMap, private patientService: PatientService) { }
+  constructor(private router: Router, private beds: Globals, private patientService: PatientService) { }
 
   ngOnInit() {
     this.beds.selectedPatient = undefined;
-    this.getAllPatients();    
+    this.getAllPatients();
     this.interval = setInterval(() => {
       this.getAllPatients();
       this.postPatientVitals();
@@ -34,9 +35,6 @@ export class BedLayoutComponent implements OnInit {
   }
 
   public getAllPatients(): void {
-    // this.patientService.getPatients()
-    //   .toPromise()
-    //   .then(response => this.patientList = response);    
     this.patientService.getPatients().subscribe((data) =>
       this.patientList = data);
   }
@@ -60,41 +58,27 @@ export class BedLayoutComponent implements OnInit {
     }
   }
 
+  public generateRandomVitals(): Vitals {
+    let temperature: number;
+    let spo2: number;
+    let pulserate: number;
+    temperature = Math.random() * (5.5) + 98;
+    spo2 = Math.random() * (60) + 20;
+    pulserate = Math.random() * (160) + 40;
+    return new Vitals(temperature, spo2, pulserate);
+  }
+
   public postPatientVitals() {
-    var temperature: number;
-    var spo2: number;
-    var pulserate: number;
     this.patientService.getPatients().subscribe(data => {
       this.patientList = data;
-      for (var  i = 0; i < this.patientList.length; i++) {
-        console.log("maybe this works?");
-      }
       for (let patient of this.patientList) {
         if (!patient.pulseRateAlert && !patient.spo2Alert && !patient.temperatureAlert && (this.beds.selectedPatient === undefined)) {
-          temperature = Math.random() * (5.5) + 98;
-          spo2 = Math.random() * (60) + 20;
-          pulserate = Math.random() * (160) + 40;
-          console.log(temperature,spo2,pulserate);
-          let vitals = new Vitals(temperature, spo2, pulserate);
-          this.patientService.getPatientVitalStatus(patient.patientId, vitals).subscribe(
-            data => { this.beds.alerts.set(patient.patientId, data)}
+          let vitals = this.generateRandomVitals();
+          this.patientService.getPatientVitalStatus(patient.patientId, vitals).toPromise().then(
+            data => { this.beds.alerts.set(patient.patientId, data) }
           );
         }
       }
     });
   }
-
-  // setAlert() {
-  //   for (let bed of this.beds.bedMap.keys()) {
-  //     console.log(this.beds.bedMap.get(bed));
-  //     if (this.beds.bedMap.get(bed)) {
-  //       var patient = this.patientList.find(patient => patient.bedId === bed);
-  //       console.log(patient.pulseRateAlert);
-  //       if (patient.pulseRateAlert ||
-  //         patient.spo2Alert ||
-  //         patient.temperatureAlert) {          
-  //       }
-  //     }
-  //   }
-  // }
 }

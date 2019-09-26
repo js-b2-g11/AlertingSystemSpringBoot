@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Patient } from './patient';
+import { Patient } from '../model/patient';
 import { PatientService } from './patient.service';
 import { Router } from '@angular/router';
-import { BedMap } from '../globals';
+import { Globals } from '../globals';
 
 
 @Component({
@@ -13,16 +13,13 @@ import { BedMap } from '../globals';
 })
 export class PatientComponent implements OnInit {  
 
-  del_patient_list: number;
-
   patientList: Patient[] = [];
 
-  constructor(private beds: BedMap, private router: Router, private patientService: PatientService) { }
+  constructor(private beds: Globals, private router: Router, private patientService: PatientService) { }
 
   ngOnInit() {
     this.getAllPatients();
     console.log(this.beds.bedMap);
-    // this.postPatientVitals();
   }
 
   public getAllPatients(): void {
@@ -40,7 +37,7 @@ export class PatientComponent implements OnInit {
         this.patientList = this.patientList.filter(h => h !== patient);
         this.beds.bedMap.set(patient.bedId, false)
       }
-    );    
+    );
   }
 
 }
