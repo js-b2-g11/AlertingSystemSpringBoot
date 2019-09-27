@@ -9,9 +9,9 @@ export class Globals {
 
   selectedPatient: any;
 
-  alerts: Map<string, any> = new Map();
-
   selectedLayout = 1;
+
+  alerts: Map<string, any> = new Map();  
 
   bedMap: Map<number, boolean> = new Map();
 

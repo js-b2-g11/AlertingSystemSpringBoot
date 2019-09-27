@@ -14,8 +14,6 @@ import { Vitals } from '../model/vitals';
 })
 export class BedLayoutComponent implements OnInit {
 
-  selectedLayout: number = 1;
-
   patientList: Patient[];
 
   patient: Patient;
