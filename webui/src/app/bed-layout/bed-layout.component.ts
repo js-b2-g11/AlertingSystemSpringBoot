@@ -52,7 +52,7 @@ export class BedLayoutComponent implements OnInit {
           this.beds.selectedPatient = data;
           this.router.navigate(['patient-detail']);
         }
-      )
+      );
     }
   }
 
@@ -69,11 +69,11 @@ export class BedLayoutComponent implements OnInit {
   public postPatientVitals() {
     this.patientService.getPatients().subscribe(data => {
       this.patientList = data;
-      for (let patient of this.patientList) {
+      for (const patient of this.patientList) {
         if (!patient.pulseRateAlert && !patient.spo2Alert && !patient.temperatureAlert && (this.beds.selectedPatient === undefined)) {
-          let vitals = this.generateRandomVitals();
+          const vitals = this.generateRandomVitals();
           this.patientService.getPatientVitalStatus(patient.patientId, vitals).toPromise().then(
-            data => { this.beds.alerts.set(patient.patientId, data) }
+            vitalData => { this.beds.alerts.set(patient.patientId, vitalData); }
           );
         }
       }

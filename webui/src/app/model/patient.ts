@@ -9,8 +9,16 @@ export class Patient {
     pulseRateAlert: boolean;
     alerts: any;
 
-    public constructor(patientId: string, bedId: number, name: string, age: number,
-        gender: string, temperatureAlert: boolean, spo2Alert: boolean, pulseRateAlert: boolean, alerts: any) {
+    public constructor(
+        patientId: string,
+        bedId: number,
+        name: string,
+        age: number,
+        gender: string,
+        temperatureAlert: boolean,
+        spo2Alert: boolean,
+        pulseRateAlert: boolean,
+        alerts: any) {
         this.patientId = patientId;
         this.bedId = bedId;
         this.name = name;

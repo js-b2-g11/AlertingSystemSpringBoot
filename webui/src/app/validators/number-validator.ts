@@ -10,5 +10,5 @@ export function numberValidator(control: AbstractControl): {
             valid: false,
             value: control.value
         }
-    }
+    };
 }

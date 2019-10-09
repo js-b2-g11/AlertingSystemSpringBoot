@@ -21,16 +21,16 @@ import { AppLoadModule } from './app-load/app-load.module';
     PatientFormComponent,
     PageNotFoundComponent,
     BedLayoutComponent,
-    PatientDetailComponent,    
+    PatientDetailComponent,
   ],
   imports: [
     BrowserModule,
     CommonModule,
-    AppRoutingModule,    
+    AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule,    
+    ReactiveFormsModule,
     RouterModule,
-    AppLoadModule   
+    AppLoadModule
   ],
   providers: [Globals],
   bootstrap: [AppComponent]

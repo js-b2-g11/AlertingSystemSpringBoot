@@ -26,7 +26,7 @@ export class PatientFormComponent implements OnInit {
     this.patientForm = this.createFormGroup();
   }
 
-  ngOnInit() {    
+  ngOnInit() {
     this.bedKeys = Object.keys(this.beds.bedMap);
   }
 
@@ -35,7 +35,7 @@ export class PatientFormComponent implements OnInit {
       patientId: new FormControl('', Validators.required),
       bedId: new FormControl('', Validators.required),
       name: new FormControl(''),
-      age: new FormControl('', [Validators.required,numberValidator]),
+      age: new FormControl('', [Validators.required, numberValidator]),
       gender: new FormControl('')
     });
   }
@@ -47,7 +47,7 @@ export class PatientFormComponent implements OnInit {
           this.beds.bedMap.set(this.patientForm.get('bedId').value, true);
           this.router.navigate(['list-patient']);
         });
-      console.log("Done?");
+      console.log('Done?');
     }
   }
 

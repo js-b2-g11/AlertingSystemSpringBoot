@@ -28,13 +28,13 @@ export class PatientDetailComponent implements OnInit {
       data => {
         this.patient = data;
       }
-    )
+    );
   }
 
   deletePatient() {
     this.patientService.deletePatient(this.patient.patientId).subscribe(
       data => {
-        this.beds.bedMap.set(this.patient.bedId, false)
+        this.beds.bedMap.set(this.patient.bedId, false);
       }
     );
     this.router.navigate(['dashboard']);
@@ -53,6 +53,6 @@ export class PatientDetailComponent implements OnInit {
         }
         this.beds.alerts.set(this.patient.patientId, alerts);
       }
-    )
+    );
   }
 }

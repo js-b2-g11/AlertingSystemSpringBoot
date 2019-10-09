@@ -11,7 +11,7 @@ import { Globals } from '../globals';
   styleUrls: ['./patient.component.css'],
   providers: [PatientService]
 })
-export class PatientComponent implements OnInit {  
+export class PatientComponent implements OnInit {
 
   patientList: Patient[] = [];
 
@@ -23,7 +23,7 @@ export class PatientComponent implements OnInit {
   }
 
   public getAllPatients(): void {
-    this.patientService.getPatients().subscribe(data => { this.patientList = data });
+    this.patientService.getPatients().subscribe(data => { this.patientList = data; });
   }
 
   public navigatePrevious() {
@@ -35,7 +35,7 @@ export class PatientComponent implements OnInit {
     this.patientService.deletePatient(patient.patientId).subscribe(
       data => {
         this.patientList = this.patientList.filter(h => h !== patient);
-        this.beds.bedMap.set(patient.bedId, false)
+        this.beds.bedMap.set(patient.bedId, false);
       }
     );
   }
